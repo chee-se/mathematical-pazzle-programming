@@ -21,13 +21,13 @@ module Q2
       OPERATIONS.each {|o2|
         OPERATIONS.each {|o3|
           next if "#{o1}#{o2}#{o3}".eql?('   ')
-          n_processed = n_str.dup.insert(1, o1).insert(3, o2).insert(5, o3).gsub(' ', '')
+          n_expr = n_str.dup.insert(1, o1).insert(3, o2).insert(5, o3).gsub(' ', '')
           # 不要な 0 を除去する
           # ruby の eval は 0 から始まる値を8進数として処理するため、そのままでは四則演算でエラーが発生する
           # ex) eval(15+08) => invalid octal digit error
-          n_processed.gsub!(/(\D)0+(\d)/, '\1\2')
+          n_expr.gsub!(/(\D)0+(\d)/, '\1\2')
         begin
-          r_result = eval(n_processed).to_s.reverse
+          r_result = eval(n_expr).to_s.reverse
           return true if r_result.eql? n_str
         rescue ZeroDivisionError => e
           next

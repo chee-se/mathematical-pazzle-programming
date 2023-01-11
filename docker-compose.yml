@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  ruby: &base
+    image: ruby:3.2.0
+    volumes:
+      - ./quiz:/quiz
+    working_dir: /quiz
+
+  java:
+    <<: *base
+    image: eclipse-temurin:17.0.5_8-jdk-alpine
+
+  python:
+    <<: *base
+    image: python:3.12.0a4-bullseye
+
+  c:
+    <<: *base
+    image: gcc:12.2.0
+
+  go:
+    <<: *base
+    image: golang:1.19.5-bullseye
+
+  js:
+    <<: *base
+    image: node:19.4.0
+
+  typescript:
+    <<: *base
+    image: denoland/deno:1.29.2

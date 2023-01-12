@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -euxo pipefail # e: エラー時に中断、u: 未定義変数をエラーにする、x: 実行したコマンドを表示、o pipefail: パイプで結合したコマンドがエラー時に中断
+
+cd "$(dirname "$0")" # スクリプトが配置されているディレクトリで作業
+
+docker-compose run --rm $1 bash

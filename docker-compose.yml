@@ -9,7 +9,7 @@ services:
 
   java:
     <<: *base
-    image: eclipse-temurin:17.0.5_8-jdk-alpine
+    image: eclipse-temurin:17.0.5_8-jdk
 
   python:
     <<: *base

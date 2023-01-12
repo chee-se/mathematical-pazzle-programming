@@ -3,7 +3,8 @@
 Use Docker Compose (Run) command to attach runtime container
 
 ```shell
-docker-compose run --rm ruby bash
+./dc ruby
+# docker-compose run --rm ruby bash
 ```
 
 ## language list

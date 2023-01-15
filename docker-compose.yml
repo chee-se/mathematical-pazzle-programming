@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   ruby: &base
-    image: ruby:3.2.0
+    image: ruby:3.2.0-slim
     volumes:
       - ./quiz:/quiz
     working_dir: /quiz
@@ -13,7 +13,7 @@ services:
 
   python:
     <<: *base
-    image: python:3.12.0a4-bullseye
+    image: python:3.12.0a4-slim-bullseye
 
   c:
     <<: *base
@@ -25,8 +25,16 @@ services:
 
   js:
     <<: *base
-    image: node:19.4.0
+    image: node:19.4.0-slim
 
   typescript:
     <<: *base
     image: denoland/deno:1.29.2
+
+  rust:
+    <<: *base
+    image: rust:1.66.1-slim-buster
+
+  erlang:
+    <<: *base
+    image: erlang:25.2.0.0-slim

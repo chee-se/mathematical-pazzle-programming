@@ -12,7 +12,9 @@ Use Docker Compose (Run) command to attach runtime container
 - ruby
 - java
 - python
-- c
+- c(gcc)
 - go
 - js
-- typescript
+- ts(deno)
+- rust
+- erlang

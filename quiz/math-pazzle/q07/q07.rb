@@ -5,7 +5,7 @@
 
 require 'date'
 
-module Q7
+module Q07
 
   def self.main
     start = Date.new(1964, 10, 10)
@@ -21,4 +21,4 @@ module Q7
   end
 end
 
-Q7.main
+Q07.main

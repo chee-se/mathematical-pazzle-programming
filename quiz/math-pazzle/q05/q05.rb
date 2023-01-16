@@ -4,7 +4,7 @@
 # ただし、使用可能な硬化は、10円、50円、100円、500円のみ、
 # 釣り銭の枚数は15枚以下とする。
 
-module Q5
+module Q05
 
   AMOUNT = 1000
   COIN_KINDS = [500, 100, 50, 10].freeze
@@ -38,4 +38,4 @@ module Q5
   end
 end
 
-Q5.main
+Q05.main

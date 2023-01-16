@@ -9,7 +9,7 @@
 
 # cf. ラコッツの予想（すべての自然数 n に対してこの処理をすると必ず1が得られる）
 
-module Q6
+module Q06
 
   def self.main
     results = 2.step(10000, 2).filter {|n| self.process(n) }
@@ -28,4 +28,4 @@ module Q6
   end
 end
 
-Q6.main
+Q06.main

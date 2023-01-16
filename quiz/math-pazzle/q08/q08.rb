@@ -10,7 +10,7 @@
 #  2   3 2     2 3    3       3
 #  3
 
-module Q8
+module Q08
 
   UP = 'UP'
   DOWN = 'DOWN'
@@ -44,4 +44,4 @@ module Q8
   end
 end
 
-Q8.main
+Q08.main

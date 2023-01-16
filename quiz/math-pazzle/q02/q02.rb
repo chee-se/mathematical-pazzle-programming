@@ -7,7 +7,7 @@
 # 621 -> 6 * 21 -> 126
 # 886 -> 8 * 86 -> 688
 
-module Q2
+module Q02
 
   OPERATIONS  = ['+', '-', '*', '/', ''].freeze
 
@@ -37,4 +37,4 @@ module Q2
   end
 end
 
-Q2.main
+Q02.main

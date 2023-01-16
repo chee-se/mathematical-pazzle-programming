@@ -8,7 +8,7 @@
 # 男男女男|女女 -> 3:1、0:2
 # 男男女男女|女 -> 3:2、0:1
 
-module Q9
+module Q09
 
   TOTAL_MAN = 20
   TOTAL_WOMAN = 10
@@ -26,4 +26,4 @@ module Q9
   end
 end
 
-puts Q9.main
+puts Q09.main

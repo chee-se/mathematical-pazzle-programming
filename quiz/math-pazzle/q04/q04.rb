@@ -14,7 +14,7 @@
 # 4: -  -   -  -  -  -  -  -/-
 # Answer: 4
 
-module Q4
+module Q04
 
   def self.main
     puts cut_pole([20], 3)
@@ -40,4 +40,4 @@ module Q4
   end
 end
 
-Q4.main
+Q04.main

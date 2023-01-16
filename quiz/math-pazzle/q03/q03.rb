@@ -4,7 +4,7 @@
 # 次に、二人目が三枚目からカードを二枚おきにめくる。
 # これを繰り返したとき、最後に裏向きになっているカードは何枚目か、すべて求めよ
 
-module Q3
+module Q03
 
   def self.main
     cards = Array.new(100, false)
@@ -21,4 +21,4 @@ module Q3
   end
 end
 
-Q3.main
+Q03.main

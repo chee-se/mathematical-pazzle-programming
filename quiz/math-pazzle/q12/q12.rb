@@ -11,9 +11,10 @@
 module Q12
 
   REJECT = 10**100
+  TENTATIVE_UPPER_LIMIT = 1000000
 
   def self.main
-    result = (1..1000000).each_with_object({only_decimal: [nil, REJECT], all_digit: [nil, REJECT]}) {|i, result|
+    result = (1..TENTATIVE_UPPER_LIMIT).each_with_object({only_decimal: [nil, REJECT], all_digit: [nil, REJECT]}) {|i, result|
       sqrt_value_str = high_precision_sqrt_str(i)
 
       if result[:only_decimal][1] > 10

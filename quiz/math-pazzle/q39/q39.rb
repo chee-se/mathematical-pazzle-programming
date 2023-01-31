@@ -14,33 +14,33 @@ module Q39
   # 過去に出たパターンは調査を打ち切り、一番深い変化を探す。
 
   @@switch = [] # initialize by method
-  @@board_pattern = Array.new(0b1111_1111_1111_1111)
+  @@board_turn = Array.new(0b1111_1111_1111_1111)
 
   def self.main
-    @@switch = switch_effects.freeze
+    @@switch = switch_effect_mask.freeze
     puts find_most_complex_state
   end
 
   def self.find_most_complex_state
-    depth = 0
-    next_queue = [[0b0000_0000_0000_0000, depth]]
+    next_queue = [[0b0000_0000_0000_0000, 0]]
 
     until next_queue.empty?
-      board, depth = next_queue.shift
-      16.times do |i|
-        new_board = @@switch[i] ^ board
-        new_depth = depth + 1
-        if new_depth < (@@board_pattern[new_board] || Float::INFINITY)
-          @@board_pattern[new_board] = new_depth
-          next_queue << [new_board, new_depth]
+      prev_board, prev_turn = next_queue.shift
+      @@switch.each do |switch_mask|
+        board = switch_mask ^ prev_board
+        turn = prev_turn + 1
+
+        if @@board_turn[board].nil?
+          @@board_turn[board] = turn
+          next_queue << [board, turn]
         end
       end
     end
 
-    @@board_pattern.max
+    @@board_turn.max
   end
 
-  def self.switch_effects
+  def self.switch_effect_mask
     16.times.map {|i|
       horizontal = 0b0000_0000_0000_1111
       horizontal <<= (3 - i / 4) * 4

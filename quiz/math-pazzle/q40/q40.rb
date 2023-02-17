@@ -25,9 +25,9 @@ module Q40
     end
 
     def process(numbers, count)
-      result = (2..N).map { |i|
+      result = (2..N).filter_map { |i|
         process(reverse(numbers, i), count + 1) if numbers[i - 1] == i
-      }.compact
+      }
       return [numbers, count] if result.empty?
 
       result.max_by {|_, cnt| cnt}

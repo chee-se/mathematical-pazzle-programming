@@ -15,31 +15,40 @@ module Q43
   MAX = 9999
 
   @memo = {}
+  @reverse_memo = {}
   @queue = []
 
   class << self
 
     def main
-      @queue = [[(1..N * 2).to_a, 0]]
+      @queue = [[(1..N * 2).to_a, 0, false], [(1..N * 2).reverse_each.to_a, 0, true]]
       puts shuffle_reverse
     end
 
     def shuffle_reverse
-      cards, cnt = nil, nil
+      memo, cards, cnt, reverse = []
       loop do
         loop do
-          cards, cnt = @queue.shift
-          break if !@memo.has_key?(cards)
+          cards, cnt, reverse = @queue.shift
+          memo = reverse ? @reverse_memo : @memo
+          break unless memo.has_key?(cards)
         end
 
-        @memo[cards] = cnt
+        memo[cards] = cnt
 
-        reverse_cards = cards.reverse
-        return @memo[cards] + @memo[reverse_cards] if @memo.has_key?(reverse_cards)
+        return @memo[cards] + @reverse_memo[cards] if @memo.has_key?(cards) && @reverse_memo.has_key?(cards)
 
-        (1..(cards.size - N)).each { | i |
-          @queue << [cards[i...i + N] + cards[0...i] + cards[i + N...2 * N], cnt + 1]
-        }
+        if reverse
+          (1..N - 1).each { | i |
+            # 先頭からN枚抜いて真ん中へ
+            @queue << [cards[N...i + N + 1] + cards[0...N] + cards[i + N + 1...2 * N], cnt + 1, true]
+          }
+        else
+          (1..N).each { | i |
+            # 真ん中からN枚抜いて先頭へ
+            @queue << [cards[i...i + N] + cards[0...i] + cards[i + N...2 * N], cnt + 1, false]
+          }
+        end
       end
     end
   end
